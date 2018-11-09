@@ -1,0 +1,14 @@
+#NS grammar
+#precedence * / % + - ~
+
+
+exp = (vardecl | op)+
+vardecl = var \w+ = fundecl | simple | array
+op = simpleVar | binOp | funcall | anonfundecl | map
+array = [op,+] | op..op
+fundecl = "func" [op,*] (: op)? {op*}
+anonfundecl = fundecl: simplevar * | \w: (op )+
+simpleVar = \w+ | [0-9]+ | \w+[op]
+binop = simpleVar (+ | - | / | * | % | ~) simpleVar
+funcall = \w+: simplevar * | \w: (op )+
+map = simplevar.map: i -> op

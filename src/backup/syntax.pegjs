@@ -26,21 +26,5 @@ co "comment"
     = "//" (![\r\n] .)*
     / "/*" (!"*/" .)* "*/"
 
-
-
-
 ws "whitespaces"
     = [ \t\r\n]+
-_ = ws*
-
-word = [a-zA-Z]+
-num = [0-9]+
-
-start = exp
-exp = vardecl / op
-op = simple / binop
-vardecl = "var"_word_\=_simple
-simple = word / num / word_\[op\]
-binop=simple (_[+-~]_term)*
-term =(factor_[*/%]_factor)*
-factor = simple / "("_binop_")"
