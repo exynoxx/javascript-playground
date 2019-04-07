@@ -12,14 +12,14 @@ function dijkstra(G, s, t = null) {
             return
         }
 
-        for (v in G.adj[u]) {
+        G.adj[u].forEach(function ([v, w]) {
 
             d = (dist[v] == undefined) ? Infinity : dist[v];
-            var alt = dist[u] + G.dist(u, v)
+            var alt = dist[u] + w
             if (alt < d) {
                 dist[v] = alt
                 prev[v] = u
-                q.push(v, alt)
+                Q.push(v, alt)
             }
         }
     }
@@ -48,16 +48,16 @@ function Astar(G, s, t, pi =) {
 
         visited[u] = true;
 
-        G.adj[u].forEach(function (e) {
+        G.adj[u].forEach(function ([v, w]) {
             if (visited[v] == true)
                 return
 
             d = (dist[v] == undefined) ? Infinity : dist[v];
-            var alt = dist[u] + G.dist(u, v)
+            var alt = dist[u] + w
             if (alt < d) {
                 dist[v] = alt
                 prev[v] = u
-                q.push(v, alt+pi(v,t))
+                Q.push(v, alt + pi(v, t))
             }
         })
     }

@@ -1,14 +1,18 @@
 class Graph {
     constructor (){
-
+        this.nodes = {}
     }
 
+    addEdge(u,v,w){
+        this.nodes[u].append([v,w])
+    }
+
+    //adj list
     adj(u) {
-        return "todo"
+        return this.nodes[u]
     }
-    dist(u,v) {
-        return "todo"
-    }
+
+    //node coordinates
     coords(u) {
         return [0,0]
     }
