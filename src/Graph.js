@@ -1,3 +1,5 @@
+
+
 class Graph {
     constructor (){
         this.nodes = {}
@@ -15,5 +17,9 @@ class Graph {
     //node coordinates
     coords(u) {
         return [0,0]
+    }
+
+    test() {
+        Astar()
     }
 }

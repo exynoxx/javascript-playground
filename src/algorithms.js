@@ -26,12 +26,12 @@ function dijkstra(G, s, t = null) {
 }
 
 function eucledian(a, b) {
-    [x1, y1] = a
-        [x2, y2] = b
+    var [x1, y1] = a
+    var [x2, y2] = b
     return Math.sqrt(Math.pow(x1 - x2, 2), Math.pow(y1 - y2, 2))
 }
 
-function Astar(G, s, t, pi =) {
+function Astar(G, s, t, heuristic = eucledian) {
     var Q = new PriorityQueue();
     Q.push(s, 0);
     var dist = {};
@@ -50,15 +50,27 @@ function Astar(G, s, t, pi =) {
 
         G.adj[u].forEach(function ([v, w]) {
             if (visited[v] == true)
-                return
+                return;
 
             d = (dist[v] == undefined) ? Infinity : dist[v];
-            var alt = dist[u] + w
+            var alt = dist[u] + w;
             if (alt < d) {
-                dist[v] = alt
-                prev[v] = u
-                Q.push(v, alt + pi(v, t))
+                dist[v] = alt;
+                prev[v] = u;
+                Q.push(v, alt + heuristic(v, t))
             }
         })
     }
+}
+
+//ALT=(A*,landmarks,triangle inequality)
+function ALT(G, s, t, pi) {
+
+}
+
+function preprocessHL(G) {
+
+}
+function HL(pi, s, t) {
+
 }
