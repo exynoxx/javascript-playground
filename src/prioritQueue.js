@@ -32,7 +32,7 @@ class PriorityQueue {
         if (this.heap.length < 3) {
             const toReturn = this.heap.pop();
             this.heap[0] = null;
-            return toReturn;
+            return toReturn.value;
         }
         const toRemove = this.heap[1];
         this.heap[1] = this.heap.pop();
@@ -45,17 +45,12 @@ class PriorityQueue {
             this.heap[currentChildIdx] = currentNode;
             this.heap[currentIdx] = currentChildNode;
         }
-        return toRemove;
+        return toRemove.value;
+    }
+
+    size() {
+        return this.heap.length
     }
 
 }
-
-function run() {
-    var q = new PriorityQueue()
-    q.push(555, 1)
-    q.push(777, 3)
-    q.push(123, 2)
-    console.log(q.pop())
-    console.log(q.pop())
-    console.log(q.pop())
-}
+exports.PriorityQueue = PriorityQueue;
