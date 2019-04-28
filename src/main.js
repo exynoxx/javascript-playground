@@ -8,6 +8,6 @@ function run() {
     G.addEdge(3,4,2);
     G.addEdge(2,4,2);
 
-    console.log(algorithms.Astar(G,1,4))
+    console.log(algorithms.dijkstra(G,1,4))
 }
 run();
